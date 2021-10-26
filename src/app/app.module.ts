@@ -3,7 +3,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,20 +25,33 @@ import { CoreModule } from './core/core.module';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     // StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
   ],
   providers: [
- /*   {
+    {
       provide: APP_INITIALIZER,
       useFactory: appInit,
       multi: true,
+      deps: [Store]
 
-    }*/
+    }
   ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
-export function appInit() {
-  console.log("INIT")
 
+export function initializeApp() {
+ /* return () => new Promise<void>((resolve, reject) => {
+    console.log(`initializeApp:: inside promise`);
+    setTimeout(() => {
+      console.log(`initializeApp:: inside setTimeout`);
+      // doing something
+      resolve();
+    }, 3000);
+  });*/
+}
+
+export function appInit(store:  Store) {
+  return () => {
+  };
 }

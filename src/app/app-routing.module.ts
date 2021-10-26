@@ -5,13 +5,8 @@ import { AppPath } from './core/constants';
 const routes: Routes = [
   {
     path: '',
-    children: [
-      {
-        path: '',
-        redirectTo: AppPath.Main,
-        pathMatch: 'full'
-      },
-    ]
+    redirectTo: AppPath.FigureSelection,
+    pathMatch: 'full'
   },
   {
     path: AppPath.FigureSelection,
@@ -20,7 +15,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: ''
+    redirectTo:  AppPath.FigureSelection,
   }
 ];
 
