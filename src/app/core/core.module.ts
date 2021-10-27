@@ -1,19 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { ShellComponent } from './containers/shell/shell.component';
+import { containers } from './containers';
+import { RootStoreModule } from './store/root-store.module';
 
 
 @NgModule({
   declarations: [
-    ShellComponent
+    ...containers
   ],
   exports: [
-    ShellComponent
+    ...containers
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RootStoreModule,
   ]
 })
 export class CoreModule {

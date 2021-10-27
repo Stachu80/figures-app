@@ -1,26 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { FiguresFacade } from '../../../core/store/facade/figures.facade';
 
 @Component({
   selector: 'app-figure-selection-container',
   templateUrl: './figure-selection-container.component.html',
-  styleUrls: [ './figure-selection-container.component.css' ]
+  styleUrls: ['./figure-selection-container.component.css'],
 })
-export class FigureSelectionContainerComponent implements OnInit {
+export class FigureSelectionContainerComponent {
+  selectFigures$ = this.figureFacade.selectFigures$;
 
-  data = [ {
-    name: "ggg"
-  },
-    {
-      name: "fff"
-    },
-  ]
-
-  constructor(private store: Store) {
-  }
-
-  ngOnInit(): void {
-    console.log("FigureSelectionContainerComponent")
-  }
-
+  constructor(private store: Store, private figureFacade: FiguresFacade) {}
 }
