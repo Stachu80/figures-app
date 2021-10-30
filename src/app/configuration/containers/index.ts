@@ -1,5 +1,5 @@
-import { ConfigurationComponent } from './configuration/configuration.component';
+import { ConfigurationContainerComponent } from './configuration-container/configuration-container.component';
 
-const containers = [ConfigurationComponent];
+const containers = [ConfigurationContainerComponent];
 
-export { containers, ConfigurationComponent };
+export { containers, ConfigurationContainerComponent };

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppPath } from './core/constants';
+import { CalculationsCanLoadGuard } from './core/guards/calculations-can-load.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
 
   {
     path: AppPath.Calculations,
+    canLoad: [CalculationsCanLoadGuard],
     loadChildren: () =>
       import('./calculations/calculations.module').then(
         (m) => m.CalculationsModule

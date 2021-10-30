@@ -1,5 +1,5 @@
-import { CalculationsFormComponent } from './calculations-form/calculations-form.component';
+import { CalculationsContainerComponent } from './calculations-container/calculations-container.component';
 
-const containers = [CalculationsFormComponent];
+const containers = [CalculationsContainerComponent];
 
-export { containers, CalculationsFormComponent };
+export { containers, CalculationsContainerComponent };
