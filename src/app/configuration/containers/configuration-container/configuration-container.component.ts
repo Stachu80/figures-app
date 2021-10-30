@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ComboboxItem } from '../../../core/models';
 import { CalculationFacade } from '../../../core/store/facade/calculation.facade';
-import { FiguresFacade } from '../../../core/store/facade/figures.facade';
+import { ConfigurationFacade } from '../../../core/store/facade/configuration.facade';
 
 @Component({
   selector: 'app-configuration-container',
@@ -10,8 +10,8 @@ import { FiguresFacade } from '../../../core/store/facade/figures.facade';
   styleUrls: ['./configuration-container.component.css'],
 })
 export class ConfigurationContainerComponent {
-  selectFiguresComboData$ = this.figureFacade.selectFiguresComboData$;
-  isReadyToCalculation$ = this.figureFacade.isReadyToCalculation$;
+  selectFiguresComboBoxData$ = this.configurationFacade.selectFiguresComboData$;
+  isReadyToCalculation$ = this.configurationFacade.isReadyToCalculation$;
   selectCalculations = [
     { id: 0, name: 'Pole powierzchni' },
     { id: 1, name: 'Obwód' },
@@ -21,12 +21,12 @@ export class ConfigurationContainerComponent {
 
   constructor(
     private store: Store,
-    private figureFacade: FiguresFacade,
+    private configurationFacade: ConfigurationFacade,
     private calculationFacade: CalculationFacade
   ) {}
 
   selectedFigure = (figure: ComboboxItem): void =>
-    this.figureFacade.setSelectedFigure(figure);
+    this.configurationFacade.setSelectedFigure(figure);
 
   selectedCalculations = (calculation: ComboboxItem): void =>
     this.calculationFacade.setSelectedCalculation(calculation);

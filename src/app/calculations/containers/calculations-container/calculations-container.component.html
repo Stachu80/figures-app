@@ -1,3 +1,10 @@
-<p>calculations-container works!</p>
+<div>{{ (selectedCalculations$|async)?.name}}</div>
+<div>{{ (selectedFigure$|async)?.name}}</div>
+
+
+<app-calculations-form
+        [params]="(selectedDetails$|async)!.params"
+        [formula]="(selectedDetails$|async)?.formula">
+</app-calculations-form>
 <button mat-stroked-button color="primary" routerLink='/configuration'> Przejdź do obliczeń
 </button>

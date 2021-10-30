@@ -15,5 +15,6 @@ export interface Details {
 }
 
 export interface Param {
-  [key: string]: string;
+  name: string;
+  description: string;
 }

@@ -1,0 +1,24 @@
+<form [formGroup]="calculationForm">
+    <div formArrayName="inputFields">
+        <label>{{title}}</label>
+        <div *ngFor="let item of paramsInput.controls; let i = index">
+            <div class="form-group" [formGroupName]="i">
+                <div class="row-container">
+                    <label class="input-group-text">
+                        {{item.get('description')?.value}}
+                    </label>
+                    <div>
+                        <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Wpisz wartość"
+                                formControlName="value"
+                                required
+                        />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

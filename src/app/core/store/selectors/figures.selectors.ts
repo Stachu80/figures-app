@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ComboboxItem, Figure } from '../../models';
+import { ComboboxItem, Details, Figure } from '../../models';
 import { AppState } from '../reducers';
 import { coreFeatureKey, CoreState } from '../reducers/coreReducer';
 
@@ -21,6 +21,25 @@ export const getSelectedCalculation = createSelector<
   CoreState,
   CoreState['selectedCalculation']
 >(selectCoreState, ({ selectedCalculation }) => selectedCalculation);
+
+export const getSelectedCalculationDetails = createSelector<
+  AppState,
+  CoreState['figures'],
+  CoreState['selectedFigure'],
+  CoreState['selectedCalculation'],
+  Details | null
+>(
+  selectFigures,
+  getSelectedFigure,
+  getSelectedCalculation,
+  (figures, selectedFigure, selectedCalculation) => {
+    return selectedFigure && selectedCalculation
+      ? selectedCalculation.id === 0
+        ? figures[selectedFigure.id].area
+        : figures[selectedFigure.id].perimeter
+      : null;
+  }
+);
 
 export const isReadyToCalculation = createSelector<
   AppState,

@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { Figure } from './core/models';
 import { ApiService } from './core/services/api.service';
-import { FiguresFacade } from './core/store/facade/figures.facade';
+import { ConfigurationFacade } from './core/store/facade/configuration.facade';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +28,7 @@ import { FiguresFacade } from './core/store/facade/figures.facade';
       provide: APP_INITIALIZER,
       useFactory: appInit,
       multi: true,
-      deps: [FiguresFacade, ApiService],
+      deps: [ConfigurationFacade, ApiService],
     },
   ],
   bootstrap: [AppComponent],
@@ -36,7 +36,7 @@ import { FiguresFacade } from './core/store/facade/figures.facade';
 export class AppModule {}
 
 export function appInit(
-  figureFacade: FiguresFacade,
+  figureFacade: ConfigurationFacade,
   api: ApiService
 ): () => Promise<void> {
   return () => {

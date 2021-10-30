@@ -7,7 +7,8 @@
         "formula": "Math.PI*r*r",
         "params": [
           {
-            "r": "Promień r"
+            "name": "r",
+            "description": "Promień r"
           }
         ]
       },
@@ -15,7 +16,8 @@
         "formula": "2*Math.PI*r",
         "params": [
           {
-            "r": "Promień r"
+            "name": "r",
+            "description": "Promień r"
           }
         ]
       }
@@ -27,7 +29,8 @@
         "formula": "a*a",
         "params": [
           {
-            "a": "Długość boku a"
+            "name": "a",
+            "description": "Długość boku a"
           }
         ]
       },
@@ -35,7 +38,8 @@
         "formula": "4*a",
         "params": [
           {
-            "a": "Długość boku a"
+            "name": "a",
+            "description": "Długość boku a"
           }
         ]
       }
@@ -47,10 +51,12 @@
         "formula": "a*b",
         "params": [
           {
-            "a": "Długość boku a"
+            "name": "a",
+            "description": "Długość boku a"
           },
           {
-            "b": "Długość boku b"
+            "name": "b",
+            "description": "Długość boku b"
           }
         ]
       },
@@ -58,10 +64,12 @@
         "formula": "2*a+2*b",
         "params": [
           {
-            "a": "Długość boku a"
+            "name": "a",
+            "description": "Długość boku a"
           },
           {
-            "b": "Długość boku b"
+            "name": "b",
+            "description": "Długość boku b"
           }
         ]
       }
@@ -73,13 +81,16 @@
         "formula": "((a+b)*h)/2",
         "params": [
           {
-            "a": "Długość boku a"
+            "name": "a",
+            "description": "Długość boku a"
           },
           {
-            "b": "Długość boku b"
+            "name": "b",
+            "description": "Długość boku b"
           },
           {
-            "h": "Wysokość h"
+            "name": "h",
+            "description": "Wysokość h"
           }
         ]
       },
@@ -87,16 +98,20 @@
         "formula": "a+b+c+d",
         "params": [
           {
-            "a": "Długość boku a"
+            "name": "a",
+            "description": "Długość boku a"
           },
           {
-            "b": "Długość boku b"
+            "name": "b",
+            "description": "Długość boku b"
           },
           {
-            "c": "Długość boku c"
+            "name": "c",
+            "description": "Długość boku c"
           },
           {
-            "d": "Długość boku d"
+            "name": "d",
+            "description": "Długość boku d"
           }
         ]
       }
