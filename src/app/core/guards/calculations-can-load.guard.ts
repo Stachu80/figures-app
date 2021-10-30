@@ -8,23 +8,24 @@ import { ConfigurationFacade } from '../store/facade/configuration.facade';
 })
 export class CalculationsCanLoadGuard implements CanLoad {
   constructor(
-          private router: Router,
-          private figureFacade: ConfigurationFacade
-  ) {
-  }
+    private router: Router,
+    private figureFacade: ConfigurationFacade
+  ) {}
 
   canLoad(
-          route: Route,
-          segments: UrlSegment[]
+    route: Route,
+    segments: UrlSegment[]
   ):
-          | Observable<boolean | UrlTree>
-          | Promise<boolean | UrlTree>
-          | boolean
-          | UrlTree {
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     return this.figureFacade.isReadyToCalculation$.pipe(
-            tap((isReady) => {
-              if (isReady === false) {
-                this.router.navigate([ '/configuration' ]);
-              }
-            }))
-  };
+      tap((isReady) => {
+        if (isReady === false) {
+          this.router.navigate(['/configuration']);
+        }
+      })
+    );
+  }
+}

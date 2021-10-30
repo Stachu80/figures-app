@@ -8,34 +8,33 @@ import { Param } from '../../../core/models';
   styleUrls: ['./calculations-form.component.css'],
 })
 export class CalculationsFormComponent implements OnInit {
-  @Input() formula: string | undefined;
+  @Input() formula!: string | undefined;
   @Input() params!: Array<Param>;
-  title = 'Wypełnij poniższe pola';
-  paramsArray!: FormArray;
   calculationForm!: FormGroup;
+  title = 'Wypełnij poniższe pola';
 
   constructor(private formBuilder: FormBuilder) {}
 
-  get paramsInput() {
-    return this.calculationForm.get('inputFields') as FormArray;
+  get calculationsControl() {
+    return this.calculationForm.controls;
   }
+
+  get inputFields() {
+    return this.calculationsControl.inputFields as FormArray;
+  }
+
   ngOnInit(): void {
     this.buildForm();
   }
 
   buildForm(): void {
     this.calculationForm = this.formBuilder.group({
-      inputFields: this.formBuilder.array([]),
+      inputFields: new FormArray([]),
     });
 
-    this.params &&
-      this.params.forEach((param) => {
-        this.paramsArray =
-          this.calculationForm &&
-          (this.calculationForm.get('inputFields') as FormArray);
-        console.log(param);
-        this.paramsArray && this.paramsArray.push(this.addInputField(param));
-      });
+    this.params.forEach((param) => {
+      this.inputFields.push(this.addInputField(param));
+    });
   }
 
   addInputField(param: Param): FormGroup {
@@ -43,15 +42,28 @@ export class CalculationsFormComponent implements OnInit {
     return this.formBuilder.group({
       name,
       description,
-      value: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(10),
-          Validators.pattern('^[0-9]*$'),
-        ],
-      ],
+      value: [null, [Validators.required]],
     });
+  }
+
+  keyPressNumbers(event: KeyboardEvent): boolean {
+    const charCode = event.code ? event.code : event.key;
+
+    if (charCode.includes('Digit')) {
+      return true;
+    }
+    event.preventDefault();
+    return false;
+  }
+
+  calculate(): void {
+    const value = this.calculationForm.value.inputFields.reduce(
+      (acc: {}, item: { name: string; value: string | number }) => {
+        return { ...acc, [item.name]: +item.value };
+      },
+      {}
+    );
+    console.log(this.formula);
+    console.log(value);
   }
 }

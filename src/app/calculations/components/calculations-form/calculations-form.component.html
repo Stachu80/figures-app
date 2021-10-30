@@ -1,7 +1,7 @@
 <form [formGroup]="calculationForm">
     <div formArrayName="inputFields">
         <label>{{title}}</label>
-        <div *ngFor="let item of paramsInput.controls; let i = index">
+        <div *ngFor="let item of inputFields.controls; let i = index">
             <div class="form-group" [formGroupName]="i">
                 <div class="row-container">
                     <label class="input-group-text">
@@ -9,16 +9,27 @@
                     </label>
                     <div>
                         <input
+
                                 class="form-control"
                                 type="text"
+                                (keypress)="keyPressNumbers($event)"
                                 placeholder="Wpisz wartość"
                                 formControlName="value"
-                                required
+                                maxlength="20"
+                                minlength="1"
+                                required pattern="[0-9\.]+"
                         />
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+
+    <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="calculate()"
+            [disabled]="calculationForm.invalid">Oblicz
+    </button>
 </form>
+
