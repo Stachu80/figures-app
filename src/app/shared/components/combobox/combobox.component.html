@@ -1,0 +1,11 @@
+<mat-form-field>
+    <mat-label>{{title|uppercase}}</mat-label>
+    <mat-select>
+        <mat-option
+                *ngFor="let element of comboElements"
+                [value]="element.name|uppercase"
+                (onSelectionChange)="elementSelected($event, element)">
+            {{element.name|uppercase}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

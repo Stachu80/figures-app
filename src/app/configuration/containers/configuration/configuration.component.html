@@ -1,0 +1,11 @@
+<app-combobox
+        [title]="comboboxName1"
+        [comboElements]="selectFiguresComboData$|async"
+        (selectedComboItem)=" selectedFigure($event)"
+></app-combobox>
+<app-combobox
+        [title]="comboboxName2"
+        [comboElements]="selectCalculations"
+        (selectedComboItem)="selectedCalculations($event)"
+></app-combobox>
+<button mat-stroked-button color="primary" routerLink='/calculations'> Przejdź do obliczeń</button>

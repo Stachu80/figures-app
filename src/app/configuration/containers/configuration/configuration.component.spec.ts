@@ -1,24 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FigureSelectionContainerComponent } from './figure-selection-container.component';
+import { ConfigurationComponent } from './configuration.component';
 import { Store, StoreModule } from '@ngrx/store';
 
-describe('FigureSelectionContainerComponent', () => {
-  let component: FigureSelectionContainerComponent;
-  let fixture: ComponentFixture<FigureSelectionContainerComponent>;
+describe('ConfigurationComponent', () => {
+  let component: ConfigurationComponent;
+  let fixture: ComponentFixture<ConfigurationComponent>;
   let store: Store;
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
       imports: [ StoreModule.forRoot({}) ],
-      declarations: [ FigureSelectionContainerComponent ]
+      declarations: [ ConfigurationComponent ]
     });
 
     await TestBed.compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FigureSelectionContainerComponent);
+    fixture = TestBed.createComponent(ConfigurationComponent);
     component = fixture.componentInstance;
     store = TestBed.inject(Store);
 

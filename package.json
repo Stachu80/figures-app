@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "api": "yarn --cwd api start",
-    "figures": "concurrently -n PLAYER,API -c bgRed.bold,bgGreen.bold.yellow \"yarn api\" \"yarn start\"",
+    "figures": "concurrently -n PLAYER,API -c bgRed.bold,bgGreen.bold \"yarn start\"  \"yarn api\"",
     "lint": "ng lint"
   },
   "private": true,
@@ -28,6 +28,7 @@
     "@ngrx/router-store": "^12.5.1",
     "@ngrx/store": "^12.5.1",
     "@ngrx/store-devtools": "^12.5.1",
+    "bootstrap": "^4.5.0",
     "rxjs": "^7.0.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -54,7 +55,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.3.5",
-    "prettier": "^2.3.0"
+    "prettier": "^2.3.0",
+    "typescript": "~4.3.5"
   }
 }

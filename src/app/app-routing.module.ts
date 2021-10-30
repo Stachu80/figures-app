@@ -5,23 +5,34 @@ import { AppPath } from './core/constants';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: AppPath.FigureSelection,
-    pathMatch: 'full'
+    redirectTo: AppPath.Configuration,
+    pathMatch: 'full',
   },
+
   {
-    path: AppPath.FigureSelection,
-    loadChildren: () => import('./figure-selection/figure-selection.module').then((m) => m.FigureSelectionModule),
+    path: AppPath.Configuration,
+    loadChildren: () =>
+      import('./configuration/configuration.module').then(
+        (m) => m.ConfigurationModule
+      ),
+  },
+
+  {
+    path: AppPath.Calculations,
+    loadChildren: () =>
+      import('./calculations/calculations.module').then(
+        (m) => m.CalculationsModule
+      ),
   },
 
   {
     path: '**',
-    redirectTo:  AppPath.FigureSelection,
-  }
+    redirectTo: AppPath.Configuration,
+  },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

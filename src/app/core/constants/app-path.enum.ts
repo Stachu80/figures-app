@@ -1,6 +1,5 @@
 export enum AppPath {
   Main = 'main',
-  FigureSelection = 'figure-selection',
-  Calculations = 'calculation',
+  Configuration = 'configuration',
+  Calculations = 'calculations',
 }
-
