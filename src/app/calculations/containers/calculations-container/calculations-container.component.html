@@ -1,8 +1,10 @@
-<div>{{ (selectedCalculations$|async)?.name}}</div>
-<div>{{ (selectedFigure$|async)?.name}}</div>
+<app-header [subtitle]="subtitle" [title]="title"></app-header>
+<app-calculation-header
+        [figureType]=" (selectedFigure$|async)?.name"
+        [calculationsType]="(selectedCalculations$|async)?.name"
+></app-calculation-header>
 <app-calculations-form
+        class="form"
         [params]="(selectedDetails$|async)!.params"
         [formula]="(selectedDetails$|async)!.formula">
 </app-calculations-form>
-<button mat-stroked-button color="primary" routerLink='/configuration'> Przejdź do obliczeń
-</button>

@@ -1,14 +1,20 @@
-<app-toolbar></app-toolbar>
-<app-combobox
-        [title]="comboboxName1"
-        [comboElements]="selectFiguresComboBoxData$|async"
-        (selectedComboItem)=" selectedFigure($event)"
-></app-combobox>
-<app-combobox
-        [title]="comboboxName2"
-        [comboElements]="selectCalculations"
-        (selectedComboItem)="selectedCalculations($event)"
-></app-combobox>
-<button mat-stroked-button color="primary" routerLink='/calculations'
-        [disabled]='(isReadyToCalculation$|async)==false'> Przejdź do obliczeń
-</button>
+<app-header [title]="title" [subtitle]="subtitle"></app-header>
+<div class="combobox-wrapper">
+    <app-combobox
+            class="combobox"
+            [title]="comboboxName1"
+            [comboElements]="selectFiguresComboBoxData$|async"
+            (selectedComboItem)=" selectedFigure($event)"
+    ></app-combobox>
+    <app-combobox
+            class="combobox"
+            [title]="comboboxName2"
+            [comboElements]="selectCalculations"
+            (selectedComboItem)="selectedCalculations($event)"
+    ></app-combobox>
+</div>
+<div class="button-wrapper">
+    <button mat-stroked-button color="primary" routerLink='/calculations'
+            [disabled]='(isReadyToCalculation$|async)==false'> {{ buttonText }}
+    </button>
+</div>

@@ -1,6 +1,5 @@
 <form [formGroup]="calculationForm">
     <div formArrayName="inputFields">
-        <label>{{title}}</label>
         <div *ngFor="let item of inputFields.controls; let i = index">
             <div class="form-group" [formGroupName]="i">
                 <div class="row-container">
@@ -28,7 +27,7 @@
             type="submit"
             class="btn btn-primary"
             (click)="calculate()"
-            [disabled]="calculationForm.invalid">Oblicz
+            [disabled]="calculationForm.invalid">{{buttonText}}
     </button>
 </form>
 

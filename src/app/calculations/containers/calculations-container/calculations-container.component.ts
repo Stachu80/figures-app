@@ -5,13 +5,14 @@ import { ConfigurationFacade } from '@app/core/store/facade/configuration.facade
 @Component({
   selector: 'app-calculations-container',
   templateUrl: './calculations-container.component.html',
-  styleUrls: ['./calculations-container.component.css'],
+  styleUrls: ['./calculations-container.component.scss'],
 })
 export class CalculationsContainerComponent {
   selectedCalculations$ = this.calculationFacade.getSelectedCalculations$;
   selectedFigure$ = this.configurationFacade.getSelectedFigure$;
   selectedDetails$ = this.calculationFacade.selectCalculationsDetails$;
-
+  title = 'Kalkulator';
+  subtitle = 'Wypełnij poniższe pola';
   constructor(
     private calculationFacade: CalculationFacade,
     private configurationFacade: ConfigurationFacade

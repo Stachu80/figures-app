@@ -6,14 +6,14 @@ import { Param } from '@app/core/models';
 @Component({
   selector: 'app-calculations-form',
   templateUrl: './calculations-form.component.html',
-  styleUrls: ['./calculations-form.component.css'],
+  styleUrls: ['./calculations-form.component.scss'],
 })
 export class CalculationsFormComponent implements OnInit {
   @Input() formula!: string;
   @Input() params!: Array<Param>;
   calculationForm!: FormGroup;
   title = 'Wypełnij poniższe pola';
-
+  buttonText = 'Oblicz';
   constructor(private formBuilder: FormBuilder) {}
 
   get calculationsControl() {
