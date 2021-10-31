@@ -10,11 +10,17 @@ import { ConfigurationFacade } from '@app/core/store/facade/configuration.facade
 export class CalculationsContainerComponent {
   selectedCalculations$ = this.calculationFacade.getSelectedCalculations$;
   selectedFigure$ = this.configurationFacade.getSelectedFigure$;
-  selectedDetails$ = this.calculationFacade.selectCalculationsDetails$;
+  selectedDetails$ = this.calculationFacade.getCalculationsDetails$;
+  result$ = this.calculationFacade.getCalculationsResult$;
   title = 'Kalkulator';
-  subtitle = 'Wypełnij poniższe pola';
+  subtitle = 'wypełnij wymagane pola';
+
   constructor(
     private calculationFacade: CalculationFacade,
     private configurationFacade: ConfigurationFacade
   ) {}
+
+  showResult(result: number) {
+    this.calculationFacade.setResult(result);
+  }
 }

@@ -10,3 +10,4 @@ export const setSelectedFigure = createAction(
   '[Figures] set selected figure',
   props<{ selectedFigure: ComboboxItem }>()
 );
+export const reset = createAction('[Configuration] reset');

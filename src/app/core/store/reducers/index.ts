@@ -1,5 +1,5 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { coreFeatureKey, coreReducer, CoreState } from './coreReducer';
+import { coreFeatureKey, coreReducer, CoreState } from './core-reducer';
 
 export interface AppState {
   [coreFeatureKey]: CoreState;

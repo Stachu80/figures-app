@@ -2,6 +2,10 @@ import { createAction, props } from '@ngrx/store';
 import { ComboboxItem } from '../../models';
 
 export const setSelectedCalculation = createAction(
-  '[Figures] set selected calculations',
+  '[Calculations] set selected calculations',
   props<{ selectedCalculation: ComboboxItem }>()
+);
+export const setResult = createAction(
+  '[Calculations] set result',
+  props<{ result: number }>()
 );

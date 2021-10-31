@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ComboboxItem } from '@app/core/models';
 import { CalculationFacade } from '@app/core/store/facade/calculation.facade';
 import { ConfigurationFacade } from '@app/core/store/facade/configuration.facade';
@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
   templateUrl: './configuration-container.component.html',
   styleUrls: ['./configuration-container.component.scss'],
 })
-export class ConfigurationContainerComponent {
+export class ConfigurationContainerComponent implements OnInit {
   selectFiguresComboBoxData$ = this.configurationFacade.selectFiguresComboData$;
   isReadyToCalculation$ = this.configurationFacade.isReadyToCalculation$;
   selectCalculations = [
@@ -27,6 +27,11 @@ export class ConfigurationContainerComponent {
     private configurationFacade: ConfigurationFacade,
     private calculationFacade: CalculationFacade
   ) {}
+
+  ngOnInit(): void {
+    console.log('init');
+    this.configurationFacade.reset();
+  }
 
   selectedFigure = (figure: ComboboxItem): void =>
     this.configurationFacade.setSelectedFigure(figure);

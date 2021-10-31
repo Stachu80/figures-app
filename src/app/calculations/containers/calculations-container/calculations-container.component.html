@@ -6,5 +6,12 @@
 <app-calculations-form
         class="form"
         [params]="(selectedDetails$|async)!.params"
-        [formula]="(selectedDetails$|async)!.formula">
+        [formula]="(selectedDetails$|async)!.formula"
+        (result)="showResult($event)">
 </app-calculations-form>
+<app-calculations-result *ngIf="(result$|async)!"
+        class="result"
+        [result]="(result$|async)!"
+        [figureType]="(selectedFigure$|async)?.name"
+        [calculationsType]="(selectedCalculations$|async)?.name"
+></app-calculations-result>

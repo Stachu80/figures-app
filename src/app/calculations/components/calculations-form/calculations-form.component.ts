@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { simplify } from 'mathjs';
 import { Param } from '@app/core/models';
+import * as math from 'mathjs';
+import { simplify } from 'mathjs';
 
 @Component({
   selector: 'app-calculations-form',
@@ -11,6 +12,7 @@ import { Param } from '@app/core/models';
 export class CalculationsFormComponent implements OnInit {
   @Input() formula!: string;
   @Input() params!: Array<Param>;
+  @Output() result = new EventEmitter<number>();
   calculationForm!: FormGroup;
   title = 'Wypełnij poniższe pola';
   buttonText = 'Oblicz';
@@ -65,8 +67,8 @@ export class CalculationsFormComponent implements OnInit {
       {}
     );
 
-    console.log(simplify(this.formula, value).toString());
-    console.log(this.formula);
-    console.log(value);
+    const mathResult = math.evaluate(simplify(this.formula, value).toString());
+    console.log(mathResult);
+    this.result.emit(mathResult);
   }
 }
