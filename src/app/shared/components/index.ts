@@ -1,5 +1,6 @@
 import { ComboboxComponent } from './combobox/combobox.component';
+import { HeaderComponent } from './header/header.component';
 
-const components = [ComboboxComponent];
+const components = [ComboboxComponent, HeaderComponent];
 
-export { components, ComboboxComponent };
+export { components, ComboboxComponent, HeaderComponent };

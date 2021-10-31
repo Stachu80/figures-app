@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ComboboxItem } from '../../../core/models';
-import { CalculationFacade } from '../../../core/store/facade/calculation.facade';
-import { ConfigurationFacade } from '../../../core/store/facade/configuration.facade';
+import { ComboboxItem } from '@app/core/models';
+import { CalculationFacade } from '@app/core/store/facade/calculation.facade';
+import { ConfigurationFacade } from '@app/core/store/facade/configuration.facade';
 
 @Component({
   selector: 'app-configuration-container',

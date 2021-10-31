@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ComboboxItem } from '../../../core/models';
+import { ComboboxItem } from '@app/core/models';
 
 @Component({
   selector: 'app-combobox',

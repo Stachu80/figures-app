@@ -9,8 +9,4 @@ import { components } from './components';
   imports: [CommonModule, MatSelectModule, ReactiveFormsModule],
   exports: [...components],
 })
-export class SharedModule {
-  constructor() {
-    console.log('Shared CORE');
-  }
-}
+export class SharedModule {}

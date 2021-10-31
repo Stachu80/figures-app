@@ -4,22 +4,9 @@ import { SharedModule } from '../shared/shared.module';
 import { containers } from './containers';
 import { RootStoreModule } from './store/root-store.module';
 
-
 @NgModule({
-  declarations: [
-    ...containers
-  ],
-  exports: [
-    ...containers
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RootStoreModule,
-  ]
+  declarations: [...containers],
+  exports: [...containers],
+  imports: [CommonModule, SharedModule, RootStoreModule],
 })
-export class CoreModule {
-  constructor() {
-    console.log("INIT CORE")
-  }
-}
+export class CoreModule {}

@@ -19,8 +19,4 @@ import { containers } from './containers';
     MatIconModule,
   ],
 })
-export class ConfigurationModule {
-  constructor() {
-    console.log('FIGURE');
-  }
-}
+export class ConfigurationModule {}

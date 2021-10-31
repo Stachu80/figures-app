@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Param } from '../../../core/models';
+import { simplify } from 'mathjs';
+import { Param } from '@app/core/models';
 
 @Component({
   selector: 'app-calculations-form',
@@ -8,7 +9,7 @@ import { Param } from '../../../core/models';
   styleUrls: ['./calculations-form.component.css'],
 })
 export class CalculationsFormComponent implements OnInit {
-  @Input() formula!: string | undefined;
+  @Input() formula!: string;
   @Input() params!: Array<Param>;
   calculationForm!: FormGroup;
   title = 'Wypełnij poniższe pola';
@@ -63,6 +64,8 @@ export class CalculationsFormComponent implements OnInit {
       },
       {}
     );
+
+    console.log(simplify(this.formula, value).toString());
     console.log(this.formula);
     console.log(value);
   }
