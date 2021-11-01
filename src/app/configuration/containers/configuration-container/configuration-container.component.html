@@ -2,19 +2,19 @@
 <div class="combobox-wrapper">
     <app-combobox
             class="combobox"
-            [title]="comboboxName1"
+            [title]="combobox0Title"
             [comboElements]="selectFiguresComboBoxData$|async"
-            (selectedComboItem)=" figureSelectedByUserInComboBox($event)"
+            (selectedComboItem)=" setChosenFigure($event)"
     ></app-combobox>
     <app-combobox
             class="combobox"
-            [title]="comboboxName2"
-            [comboElements]="selectCalculationsComboData$|async"
-            (selectedComboItem)="calculationSelectedInComboBox($event)"
+            [title]="combobox1Title"
+            [comboElements]="selectCalculationsData$|async"
+            (selectedComboItem)="selectedCalculations($event)"
     ></app-combobox>
 </div>
 <div class="button-wrapper">
-    <button mat-stroked-button color="primary" routerLink='/calculations'
-            [disabled]='(isReadyToCalculation$|async)==false'> {{ buttonText }}
+    <button mat-stroked-button color="primary" (click)="goToCalculations()"
+            [disabled]='(isReadyToCalculation$|async)==false'> {{ buttonLabel }}
     </button>
 </div>

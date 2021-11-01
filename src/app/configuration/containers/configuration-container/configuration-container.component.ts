@@ -1,36 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppPath } from '@app/core/constants';
+import { Dictionary } from '@app/core/constants/dictionary.enum';
 import { ComboboxItem } from '@app/core/models';
-import { ConfigurationFacade } from '@app/core/store/facade/configuration.facade';
+import { FiguresFacade } from '@app/core/store/facade/figures.facade';
 import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-configuration-container',
   templateUrl: './configuration-container.component.html',
   styleUrls: ['./configuration-container.component.scss'],
+
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigurationContainerComponent implements OnInit {
-  selectFiguresComboBoxData$ = this.configurationFacade.figuresDataInComboBox$;
-  isReadyToCalculation$ = this.configurationFacade.isReadyToCalculation$;
-  selectCalculationsComboData$ =
-    this.configurationFacade.calculationDataInComboBox$;
-  comboboxName1 = 'Wybierz figurę';
-  comboboxName2 = 'Wybierz obliczenia';
-  buttonText = 'Przejdź do obliczeń';
-  title = 'Figury';
-  subtitle = 'Obliczanie pola powierzchni lub obwodu wybranej figury';
+  selectFiguresComboBoxData$ = this.figuresFacade.selectFiguresData$;
+  isReadyToCalculation$ = this.figuresFacade.isReadyToCalculation$;
+  selectCalculationsData$ = this.figuresFacade.selectCalculationsData$;
+  combobox0Title = Dictionary.ChoseFigure;
+  combobox1Title = Dictionary.ChoseCalculation;
+  buttonLabel = Dictionary.GotoCalculations;
+  title = Dictionary.ConfigurationViewTitle;
+  subtitle = Dictionary.ConfigurationViewSubtitle;
+  path = AppPath.Calculations;
 
   constructor(
     private store: Store,
-    private configurationFacade: ConfigurationFacade
+    private figuresFacade: FiguresFacade,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.configurationFacade.reset();
+    this.figuresFacade.reset();
   }
 
-  figureSelectedByUserInComboBox = (figure: ComboboxItem): void =>
-    this.configurationFacade.figureSelectedByUserInComboBox(figure);
+  setChosenFigure = (figure: ComboboxItem): void =>
+    this.figuresFacade.setChosenFigure(figure);
 
-  calculationSelectedInComboBox = (calculation: ComboboxItem): void =>
-    this.configurationFacade.calculationSelectedInComboBox(calculation);
+  selectedCalculations = (calculation: ComboboxItem): void =>
+    this.figuresFacade.selectedCalculations(calculation);
+
+  goToCalculations(): void {
+    this.router.navigate([AppPath.Calculations]);
+  }
 }

@@ -1,20 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { AppPath } from '@app/core/constants';
 
 @Component({
   selector: 'app-calculation-header',
   templateUrl: './calculation-header.component.html',
   styleUrls: ['./calculation-header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalculationHeaderComponent implements OnInit {
   @Input() calculationsType: string | undefined;
   @Input() figureType: string | undefined;
-  buttonText = 'Wróć do konfiguracji';
-  txt0 = 'Chcesz obliczyć ';
-  txt1 = ' figury : ';
   instruction: string | undefined;
+  buttonLabelText = 'Wróć do konfiguracji';
+  path = AppPath.Configuration;
 
   ngOnInit(): void {
-    this.instruction =
-      this.txt0 + this.calculationsType + this.txt1 + this.figureType;
+    this.instruction = `Chcesz obliczyć ${this.calculationsType} figury : ${this.figureType}`;
   }
 }

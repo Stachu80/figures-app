@@ -3,13 +3,13 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FiguresFacade } from '@app/core/store/facade/figures.facade';
 import { firstValueFrom, map } from 'rxjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { Data } from './core/models';
 import { ApiService } from './core/services/api.service';
-import { ConfigurationFacade } from './core/store/facade/configuration.facade';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +28,7 @@ import { ConfigurationFacade } from './core/store/facade/configuration.facade';
       provide: APP_INITIALIZER,
       useFactory: appInit,
       multi: true,
-      deps: [ConfigurationFacade, ApiService],
+      deps: [FiguresFacade, ApiService],
     },
   ],
   bootstrap: [AppComponent],
@@ -36,7 +36,7 @@ import { ConfigurationFacade } from './core/store/facade/configuration.facade';
 export class AppModule {}
 
 export function appInit(
-  figureFacade: ConfigurationFacade,
+  figureFacade: FiguresFacade,
   api: ApiService
 ): () => Promise<void> {
   return () => {

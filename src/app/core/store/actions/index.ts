@@ -1,4 +1,3 @@
-import * as ConfigurationsAction from './configuration.actions';
-import * as CalculationsAction from './calculations.actions';
+import * as FiguresAction from './figures.actions';
 
-export { ConfigurationsAction, CalculationsAction };
+export { FiguresAction };

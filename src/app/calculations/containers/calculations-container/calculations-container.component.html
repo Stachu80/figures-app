@@ -1,17 +1,17 @@
 <app-header [subtitle]="subtitle" [title]="title"></app-header>
 <app-calculation-header
-        [figureType]=" (figureSelectedByUserInComboBox$|async)?.name"
-        [calculationsType]="(calculationSelectedByUserInComboBox$|async)?.name"
+        [figureType]=" (selectChosenFigure$|async)?.name"
+        [calculationsType]="(selectChosenCalculations$|async)?.name"
 ></app-calculation-header>
 <app-calculations-form
         class="form"
-        [params]="(getCalculationsDetails$|async)!.params"
-        [formula]="(getCalculationsDetails$|async)!.formula"
+        [params]="(selectCalculationsDetails$|async)!.params"
+        [formula]="(selectCalculationsDetails$|async)!.formula"
         (result)="showResult($event)">
 </app-calculations-form>
 <app-calculations-result *ngIf="(result$|async)!"
         class="result"
         [result]="(result$|async)!"
-        [figureType]="(figureSelectedByUserInComboBox$|async)?.name"
-        [calculationsType]="(calculationSelectedByUserInComboBox$|async)?.name"
+        [figureType]="(selectChosenFigure$|async)?.name"
+        [calculationsType]="(selectChosenCalculations$|async)?.name"
 ></app-calculations-result>

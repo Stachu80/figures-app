@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  CalculationsAction,
-  ConfigurationsAction,
-} from '@app/core/store/actions';
+import { FiguresAction } from '@app/core/store/actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { concatMap } from 'rxjs';
 
@@ -10,13 +7,13 @@ import { concatMap } from 'rxjs';
 export class DataEffects {
   apiData$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ConfigurationsAction.setAllApiDataInStore),
+      ofType(FiguresAction.setApiData),
       concatMap(({ data }) => {
         return [
-          ConfigurationsAction.setAllFiguresDataInStore({
+          FiguresAction.setFiguresData({
             figuresData: data.figures,
           }),
-          CalculationsAction.setAllCalculationsDataInStore({
+          FiguresAction.setCalculationsData({
             calculationsData: data.calculations,
           }),
         ];

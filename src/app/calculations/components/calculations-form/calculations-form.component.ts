@@ -1,5 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Dictionary } from '@app/core/constants';
 import { Param } from '@app/core/models';
 import * as math from 'mathjs';
 import { simplify } from 'mathjs';
@@ -8,21 +22,25 @@ import { simplify } from 'mathjs';
   selector: 'app-calculations-form',
   templateUrl: './calculations-form.component.html',
   styleUrls: ['./calculations-form.component.scss'],
+
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalculationsFormComponent implements OnInit {
   @Input() formula!: string;
   @Input() params!: Array<Param>;
   @Output() result = new EventEmitter<number>();
+
   calculationForm!: FormGroup;
-  title = 'Wypełnij poniższe pola';
-  buttonText = 'Oblicz';
+  title = Dictionary.CalculationsViewSubtitle;
+  buttonLabel = Dictionary.CalculationsButtonLabel;
+
   constructor(private formBuilder: FormBuilder) {}
 
-  get calculationsControl() {
+  get calculationsControl(): { [p: string]: AbstractControl } {
     return this.calculationForm.controls;
   }
 
-  get inputFields() {
+  get inputFields(): FormArray {
     return this.calculationsControl.inputFields as FormArray;
   }
 
@@ -36,12 +54,12 @@ export class CalculationsFormComponent implements OnInit {
     });
 
     this.params.forEach((param) => {
-      this.inputFields.push(this.addInputField(param));
+      const { name, description } = param;
+      this.inputFields.push(this.createInputField(name, description));
     });
   }
 
-  addInputField(param: Param): FormGroup {
-    const { name, description } = param;
+  createInputField(name: string, description: string): FormGroup {
     return this.formBuilder.group({
       name,
       description,
@@ -60,7 +78,6 @@ export class CalculationsFormComponent implements OnInit {
   }
 
   calculate(): void {
-    console.log(this.calculationForm.value.inputFields);
     const value = this.calculationForm.value.inputFields.reduce(
       (acc: {}, item: { name: string; value: string | number }) => {
         return { ...acc, [item.name]: +item.value };
