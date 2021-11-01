@@ -27,5 +27,8 @@ In the project directory run:
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-##
-errorHandling - sentry
+## Errors
+errorHandling - global in interceptor and connect with sentry
+
+## add new figure
+everything you should do to add new figure is edit api/src/json/data.json 
