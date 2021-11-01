@@ -27,3 +27,5 @@ In the project directory run:
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+##
+errorHandling - sentry
