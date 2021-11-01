@@ -3,11 +3,11 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { firstValueFrom, map, pluck } from 'rxjs';
+import { firstValueFrom, map } from 'rxjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { Figure } from './core/models';
+import { Data } from './core/models';
 import { ApiService } from './core/services/api.service';
 import { ConfigurationFacade } from './core/store/facade/configuration.facade';
 
@@ -41,10 +41,7 @@ export function appInit(
 ): () => Promise<void> {
   return () => {
     return firstValueFrom(
-      api.getFigures$().pipe(
-        pluck('figures'),
-        map((figures: Figure[]) => figureFacade.setFigures(figures))
-      )
+      api.getData$().pipe(map((data: Data) => figureFacade.setData(data)))
     );
   };
 }

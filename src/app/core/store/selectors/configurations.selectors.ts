@@ -5,26 +5,55 @@ import { coreFeatureKey, CoreState } from '../reducers/core-reducer';
 
 export const selectCoreState = createFeatureSelector<CoreState>(coreFeatureKey);
 
-export const selectFigures = createSelector<AppState, CoreState, Figure[]>(
-  selectCoreState,
-  ({ figures }) => figures
-);
-
-export const getSelectedFigure = createSelector<
+export const selectAllFiguresData = createSelector<
   AppState,
   CoreState,
-  CoreState['selectedFigure']
->(selectCoreState, ({ selectedFigure }) => selectedFigure);
+  Figure[]
+>(selectCoreState, ({ figuresData }) => figuresData);
 
-export const selectFiguresComboData = createSelector<
+export const figureSelectedByUserInComboBox = createSelector<
+  AppState,
+  CoreState,
+  CoreState['figureSelectedInComboBox']
+>(selectCoreState, ({ figureSelectedInComboBox }) => figureSelectedInComboBox);
+
+export const calculationDataInComboBox = createSelector<
+  AppState,
+  CoreState,
+  ComboboxItem[]
+>(selectCoreState, ({ calculationsData }) => calculationsData);
+
+export const figuresDataInComboBox = createSelector<
   AppState,
   Figure[],
   ComboboxItem[]
->(selectFigures, (figures) =>
+>(selectAllFiguresData, (figures) =>
   figures.map(({ id, name }) => {
     return {
       id,
       name,
     };
   })
+);
+
+export const calculationSelectedByUserInComboBox = createSelector<
+  AppState,
+  CoreState,
+  CoreState['calculationSelectedInComboBox']
+>(
+  selectCoreState,
+  ({ calculationSelectedInComboBox }) => calculationSelectedInComboBox
+);
+
+export const isReadyToCalculation = createSelector<
+  AppState,
+  CoreState['figureSelectedInComboBox'],
+  CoreState['calculationSelectedInComboBox'],
+  boolean
+>(
+  figureSelectedByUserInComboBox,
+  calculationSelectedByUserInComboBox,
+  (selectedFigure, selectedCalculation) => {
+    return selectedFigure !== null && selectedCalculation !== null;
+  }
 );

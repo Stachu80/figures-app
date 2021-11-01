@@ -4,7 +4,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '@environments/environment';
-import { figuresEffects } from './effects';
+import { dataEffects } from './effects';
 import { reducers } from './reducers';
 
 export const routerStateConfig = {
@@ -13,7 +13,7 @@ export const routerStateConfig = {
 
 @NgModule({
   imports: [
-    EffectsModule.forRoot(figuresEffects),
+    EffectsModule.forRoot(dataEffects),
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
         strictStateImmutability: true,

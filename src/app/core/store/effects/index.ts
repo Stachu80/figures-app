@@ -1,3 +1,3 @@
-import { FiguresEffects } from './figures/figures.effects';
+import { DataEffects } from './figures/data-effects.service';
 
-export const figuresEffects = [ FiguresEffects ];
+export const dataEffects = [DataEffects];

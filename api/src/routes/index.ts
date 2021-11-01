@@ -1,3 +1,3 @@
-import figures from './figures';
+import figures from './data';
 
 export const routes = [figures];

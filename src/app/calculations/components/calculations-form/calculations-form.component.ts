@@ -68,7 +68,6 @@ export class CalculationsFormComponent implements OnInit {
     );
 
     const mathResult = math.evaluate(simplify(this.formula, value).toString());
-    console.log(mathResult);
     this.result.emit(mathResult);
   }
 }

@@ -1,7 +1,3 @@
-export interface Figures {
-  figures: Figure[];
-}
-
 export interface Figure {
   id: number;
   name: string;

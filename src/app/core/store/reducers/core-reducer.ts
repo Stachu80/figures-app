@@ -1,48 +1,59 @@
+import { Figure } from '@app/core/models';
 import { createReducer, on } from '@ngrx/store';
 import { ComboboxItem } from '../../models';
-import { Figure } from '@app/core/models';
 import {
+  setAllCalculationsDataInStore,
   setResult,
-  setSelectedCalculation,
+  calculationSelectedByUserInComboBox,
 } from '../actions/calculations.actions';
 import {
   reset,
-  setFigures,
-  setSelectedFigure,
+  setAllFiguresDataInStore,
+  figureSelectedByUserInComboBox,
 } from '../actions/configuration.actions';
 
 export const coreFeatureKey = 'core';
 
 export interface CoreState {
-  figures: Figure[];
-  selectedFigure: ComboboxItem | null;
-  selectedCalculation: ComboboxItem | null;
+  figuresData: Figure[];
+  calculationsData: ComboboxItem[];
+  figureSelectedInComboBox: ComboboxItem | null;
+  calculationSelectedInComboBox: ComboboxItem | null;
   result: number | null;
 }
 
 export const initialState: CoreState = {
-  figures: [],
-  selectedFigure: null,
-  selectedCalculation: null,
+  figuresData: [],
+  calculationsData: [],
+  figureSelectedInComboBox: null,
+  calculationSelectedInComboBox: null,
   result: null,
 };
 
 export const coreReducer = createReducer(
   initialState,
-  on(setFigures, (state, { figures }) => ({
+  on(setAllFiguresDataInStore, (state, { figuresData }) => ({
     ...state,
-    figures,
+    figuresData,
   })),
 
-  on(setSelectedFigure, (state, { selectedFigure }) => ({
+  on(setAllCalculationsDataInStore, (state, { calculationsData }) => ({
     ...state,
-    selectedFigure,
+    calculationsData,
   })),
 
-  on(setSelectedCalculation, (state, { selectedCalculation }) => ({
+  on(figureSelectedByUserInComboBox, (state, { figureSelectedInComboBox }) => ({
     ...state,
-    selectedCalculation,
+    figureSelectedInComboBox,
   })),
+
+  on(
+    calculationSelectedByUserInComboBox,
+    (state, { calculationSelectedInComboBox }) => ({
+      ...state,
+      calculationSelectedInComboBox,
+    })
+  ),
 
   on(setResult, (state, { result }) => ({
     ...state,
@@ -51,8 +62,8 @@ export const coreReducer = createReducer(
 
   on(reset, (state) => ({
     ...state,
-    selectedFigure: null,
-    selectedCalculation: null,
+    figureSelectedInComboBox: null,
+    calculationSelectedInComboBox: null,
     result: null,
   }))
 );

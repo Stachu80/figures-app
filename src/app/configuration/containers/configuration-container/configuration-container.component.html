@@ -4,13 +4,13 @@
             class="combobox"
             [title]="comboboxName1"
             [comboElements]="selectFiguresComboBoxData$|async"
-            (selectedComboItem)=" selectedFigure($event)"
+            (selectedComboItem)=" figureSelectedByUserInComboBox($event)"
     ></app-combobox>
     <app-combobox
             class="combobox"
             [title]="comboboxName2"
-            [comboElements]="selectCalculations"
-            (selectedComboItem)="selectedCalculations($event)"
+            [comboElements]="selectCalculationsComboData$|async"
+            (selectedComboItem)="calculationSelectedInComboBox($event)"
     ></app-combobox>
 </div>
 <div class="button-wrapper">

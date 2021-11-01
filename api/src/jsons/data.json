@@ -117,7 +117,14 @@
       }
     }
   ],
-  "calculations": {
-
-  }
+  "calculations": [
+    {
+      "id": 0,
+      "name":"pole powierzchni"
+    },
+    {
+      "id": 1,
+      "name": "obwód"
+    }
+  ]
 }

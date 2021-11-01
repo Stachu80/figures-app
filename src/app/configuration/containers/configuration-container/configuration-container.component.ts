@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ComboboxItem } from '@app/core/models';
-import { CalculationFacade } from '@app/core/store/facade/calculation.facade';
 import { ConfigurationFacade } from '@app/core/store/facade/configuration.facade';
 import { Store } from '@ngrx/store';
 
@@ -10,12 +9,10 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./configuration-container.component.scss'],
 })
 export class ConfigurationContainerComponent implements OnInit {
-  selectFiguresComboBoxData$ = this.configurationFacade.selectFiguresComboData$;
+  selectFiguresComboBoxData$ = this.configurationFacade.figuresDataInComboBox$;
   isReadyToCalculation$ = this.configurationFacade.isReadyToCalculation$;
-  selectCalculations = [
-    { id: 0, name: 'pole powierzchni' },
-    { id: 1, name: 'obwód' },
-  ];
+  selectCalculationsComboData$ =
+    this.configurationFacade.calculationDataInComboBox$;
   comboboxName1 = 'Wybierz figurę';
   comboboxName2 = 'Wybierz obliczenia';
   buttonText = 'Przejdź do obliczeń';
@@ -24,18 +21,16 @@ export class ConfigurationContainerComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private configurationFacade: ConfigurationFacade,
-    private calculationFacade: CalculationFacade
+    private configurationFacade: ConfigurationFacade
   ) {}
 
   ngOnInit(): void {
-    console.log('init');
     this.configurationFacade.reset();
   }
 
-  selectedFigure = (figure: ComboboxItem): void =>
-    this.configurationFacade.setSelectedFigure(figure);
+  figureSelectedByUserInComboBox = (figure: ComboboxItem): void =>
+    this.configurationFacade.figureSelectedByUserInComboBox(figure);
 
-  selectedCalculations = (calculation: ComboboxItem): void =>
-    this.calculationFacade.setSelectedCalculation(calculation);
+  calculationSelectedInComboBox = (calculation: ComboboxItem): void =>
+    this.configurationFacade.calculationSelectedInComboBox(calculation);
 }

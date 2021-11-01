@@ -8,9 +8,14 @@ import { ConfigurationFacade } from '@app/core/store/facade/configuration.facade
   styleUrls: ['./calculations-container.component.scss'],
 })
 export class CalculationsContainerComponent {
-  selectedCalculations$ = this.calculationFacade.getSelectedCalculations$;
-  selectedFigure$ = this.configurationFacade.getSelectedFigure$;
-  selectedDetails$ = this.calculationFacade.getCalculationsDetails$;
+  getCalculationsDetails$ = this.calculationFacade.getCalculationsDetails$;
+
+  calculationSelectedByUserInComboBox$ =
+    this.configurationFacade.calculationSelectedByUserInComboBox$;
+
+  figureSelectedByUserInComboBox$ =
+    this.configurationFacade.figureSelectedByUserInComboBox$;
+
   result$ = this.calculationFacade.getCalculationsResult$;
   title = 'Kalkulator';
   subtitle = 'wypełnij wymagane pola';

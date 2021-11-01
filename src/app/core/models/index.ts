@@ -1,2 +1,3 @@
+export * from './data.model';
 export * from './figures.model';
-export * from './comboBoxItem.model';
+export * from './combobox-item.model';
