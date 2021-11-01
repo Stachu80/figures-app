@@ -1,31 +1,25 @@
-import { Component } from '@angular/core';
-import { CalculationFacade } from '@app/core/store/facade/calculation.facade';
-import { ConfigurationFacade } from '@app/core/store/facade/configuration.facade';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Dictionary } from '@app/core/constants';
+import { FiguresFacade } from '@app/core/store/facade/figures.facade';
 
 @Component({
   selector: 'app-calculations-container',
   templateUrl: './calculations-container.component.html',
   styleUrls: ['./calculations-container.component.scss'],
+
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalculationsContainerComponent {
-  getCalculationsDetails$ = this.calculationFacade.getCalculationsDetails$;
+  selectCalculationsDetails$ = this.figuresFacade.selectCalculationsDetails$;
+  selectChosenCalculations$ = this.figuresFacade.selectChosenCalculations$;
+  selectChosenFigure$ = this.figuresFacade.selectChosenFigure$;
+  result$ = this.figuresFacade.selectResult$;
+  title = Dictionary.CalculationsViewTitle;
+  subtitle = Dictionary.CalculationsViewSubtitle;
 
-  calculationSelectedByUserInComboBox$ =
-    this.configurationFacade.calculationSelectedByUserInComboBox$;
+  constructor(private figuresFacade: FiguresFacade) {}
 
-  figureSelectedByUserInComboBox$ =
-    this.configurationFacade.figureSelectedByUserInComboBox$;
-
-  result$ = this.calculationFacade.getCalculationsResult$;
-  title = 'Kalkulator';
-  subtitle = 'wypełnij wymagane pola';
-
-  constructor(
-    private calculationFacade: CalculationFacade,
-    private configurationFacade: ConfigurationFacade
-  ) {}
-
-  showResult(result: number) {
-    this.calculationFacade.setResult(result);
+  showResult(result: number): void {
+    this.figuresFacade.setResult(result);
   }
 }

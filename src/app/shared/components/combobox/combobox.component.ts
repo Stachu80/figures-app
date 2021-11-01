@@ -1,10 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { ComboboxItem } from '@app/core/models';
 
 @Component({
   selector: 'app-combobox',
   templateUrl: './combobox.component.html',
   styleUrls: ['./combobox.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ComboboxComponent {
   @Input() title?: string;

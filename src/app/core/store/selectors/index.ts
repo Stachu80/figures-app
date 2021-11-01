@@ -1,2 +1,1 @@
-export * from './configurations.selectors';
-export * from './calculations.selectors';
+export * from './figures.selectors';
