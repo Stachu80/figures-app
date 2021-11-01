@@ -14,7 +14,7 @@ const mockData = {
       id: 0,
       name: 'Koło',
       area: {
-        formula: '3.14 * r * r',
+        formula: 'pi * r * r',
         params: [
           {
             name: 'r',
@@ -23,7 +23,7 @@ const mockData = {
         ],
       },
       perimeter: {
-        formula: '2 * 3.14 * r',
+        formula: '2 * pi * r',
         params: [
           {
             name: 'r',

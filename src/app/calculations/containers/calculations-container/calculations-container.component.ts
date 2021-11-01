@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Dictionary } from '@app/core/constants';
+import { Router } from '@angular/router';
+import { AppPath, Dictionary } from '@app/core/constants';
 import { FiguresFacade } from '@app/core/store/facade/figures.facade';
 
 @Component({
@@ -16,10 +17,15 @@ export class CalculationsContainerComponent {
   result$ = this.figuresFacade.selectResult$;
   title = Dictionary.CalculationsViewTitle;
   subtitle = Dictionary.CalculationsViewSubtitle;
+  buttonLabelText = Dictionary.GotoConfiguration;
 
-  constructor(private figuresFacade: FiguresFacade) {}
+  constructor(private figuresFacade: FiguresFacade, private router: Router) {}
 
   showResult(result: number): void {
     this.figuresFacade.setResult(result);
+  }
+
+  goToConfiguration(): void {
+    this.router.navigate([AppPath.Configuration]);
   }
 }
