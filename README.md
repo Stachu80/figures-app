@@ -2,6 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
 The state of the application is stored with  [NgRx](https://ngrx.io/) version 12.5.1
+node 14.17.0
 
 ## Installation
 
