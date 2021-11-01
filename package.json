@@ -1,14 +1,14 @@
 {
   "name": "figures-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "front": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "api": "yarn --cwd api start",
-    "figures": "concurrently -n PLAYER,API -c bgRed.bold,bgGreen.bold \"yarn start\"  \"yarn api\"",
+    "start": "concurrently -n PLAYER,API -c bgRed.bold,bgGreen.bold \"yarn front\"  \"yarn api\"",
     "lint": "ng lint"
   },
   "private": true,

@@ -60,6 +60,7 @@ export class CalculationsFormComponent implements OnInit {
   }
 
   calculate(): void {
+    console.log(this.calculationForm.value.inputFields);
     const value = this.calculationForm.value.inputFields.reduce(
       (acc: {}, item: { name: string; value: string | number }) => {
         return { ...acc, [item.name]: +item.value };
