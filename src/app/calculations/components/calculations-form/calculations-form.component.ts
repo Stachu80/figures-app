@@ -78,11 +78,7 @@ export class CalculationsFormComponent implements OnInit {
       event.preventDefault();
     }
 
-    if (
-      charCode.includes('Digit') ||
-      charCode.includes('Backspace') ||
-      charCode.includes('Comma')
-    ) {
+    if (charCode.includes('Digit') || charCode.includes('Backspace')) {
       return true;
     }
     event.preventDefault();
