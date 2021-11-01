@@ -14,7 +14,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Dictionary } from '@app/core/constants';
-import { Param } from '@app/core/models';
+import { CalculationsParam } from '@app/core/models';
 import * as math from 'mathjs';
 import { simplify } from 'mathjs';
 
@@ -27,7 +27,7 @@ import { simplify } from 'mathjs';
 })
 export class CalculationsFormComponent implements OnInit {
   @Input() formula!: string;
-  @Input() params!: Array<Param>;
+  @Input() params!: Array<CalculationsParam>;
   @Output() result = new EventEmitter<number>();
 
   calculationForm!: FormGroup;
@@ -67,7 +67,7 @@ export class CalculationsFormComponent implements OnInit {
     });
   }
 
-  keyPressNumbers(event: KeyboardEvent): boolean {
+  keyUp(event: KeyboardEvent): boolean {
     const charCode = event.code ? event.code : event.key;
 
     if (charCode.includes('Digit')) {

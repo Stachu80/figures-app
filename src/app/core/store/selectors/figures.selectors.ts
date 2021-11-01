@@ -1,4 +1,4 @@
-import { ComboboxItem, Details, Figure } from '@app/core/models';
+import { ComboboxItem, CalculationsDetails, Figure } from '@app/core/models';
 import { AppState } from '@app/core/store/reducers';
 import {
   CoreState,
@@ -64,7 +64,7 @@ export const selectedCalculationDetails = createSelector<
   CoreState['figuresData'],
   CoreState['chosenFigure'],
   CoreState['chosenCalculations'],
-  Details | null
+  CalculationsDetails | null
 >(
   selectAllFiguresData,
   selectChosenFigure,

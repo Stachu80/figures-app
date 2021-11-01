@@ -1,16 +1,16 @@
 export interface Figure {
   id: number;
   name: string;
-  area: Details;
-  perimeter: Details;
+  area: CalculationsDetails;
+  perimeter: CalculationsDetails;
 }
 
-export interface Details {
+export interface CalculationsDetails {
   formula: string;
-  params: Param[];
+  params: CalculationsParam[];
 }
 
-export interface Param {
+export interface CalculationsParam {
   name: string;
   description: string;
 }

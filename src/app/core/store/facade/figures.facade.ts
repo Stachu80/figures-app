@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ComboboxItem, Data } from '@app/core/models';
+import { ComboboxItem, ApiData } from '@app/core/models';
 import { FiguresAction } from '@app/core/store/actions';
 import { AppState } from '@app/core/store/reducers';
 import {
@@ -32,7 +32,7 @@ export class FiguresFacade {
     this.store.dispatch(FiguresAction.setResult({ result }));
   }
 
-  setData(data: Data): void {
+  setData(data: ApiData): void {
     this.store.dispatch(FiguresAction.setApiData({ data }));
   }
 

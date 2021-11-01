@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { ComboboxItem, Data, Figure } from '../../models';
+import { ComboboxItem, ApiData, Figure } from '../../models';
 
 export const setApiData = createAction(
   '[Figures] get data from api  ',
-  props<{ data: Data }>()
+  props<{ data: ApiData }>()
 );
 
 export const setFiguresData = createAction(

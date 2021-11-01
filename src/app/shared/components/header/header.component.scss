@@ -1,16 +1,16 @@
 :host {
+  position:relative;
   width: 100%;
-  height: 14%;
-  display: block;
+  min-height: 10%;
+  display: flex;
   background-color: #2d568f;
 }
 
 .title,
 .subtitle {
   color: #ffffff;
-  margin-left: 4rem;
+  margin-left:10%;
+  margin-top:5%;
+  width: 100%;
 }
 
-.title {
-  padding-top: 4rem;
-}

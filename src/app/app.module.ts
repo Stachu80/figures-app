@@ -8,7 +8,7 @@ import { firstValueFrom, map } from 'rxjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { Data } from './core/models';
+import { ApiData } from './core/models';
 import { ApiService } from './core/services/api.service';
 
 @NgModule({
@@ -41,7 +41,7 @@ export function appInit(
 ): () => Promise<void> {
   return () => {
     return firstValueFrom(
-      api.getData$().pipe(map((data: Data) => figureFacade.setData(data)))
+      api.getData$().pipe(map((data: ApiData) => figureFacade.setData(data)))
     );
   };
 }
