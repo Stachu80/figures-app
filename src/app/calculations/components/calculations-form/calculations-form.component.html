@@ -11,7 +11,7 @@
 
                                 class="form-control"
                                 type="text"
-                                (keyup)="keyUp($event)"
+                                (keydown)="restrict($event)"
                                 placeholder="Wpisz wartość"
                                 formControlName="value"
                                 maxlength="20"
@@ -26,7 +26,7 @@
     <button
             type="submit"
             class="btn btn-primary"
-            (click)="calculate()"
+            (click)="sendResult()"
             [disabled]="calculationForm.invalid">{{buttonLabel}}
     </button>
 </form>

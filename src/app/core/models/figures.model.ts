@@ -14,3 +14,7 @@ export interface CalculationsParam {
   name: string;
   description: string;
 }
+
+export interface FormCalculationsParam extends CalculationsParam {
+  value: 'string';
+}

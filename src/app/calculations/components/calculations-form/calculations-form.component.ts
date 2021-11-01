@@ -14,9 +14,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Dictionary } from '@app/core/constants';
-import { CalculationsParam } from '@app/core/models';
-import * as math from 'mathjs';
-import { simplify } from 'mathjs';
+import { CalculationsParam, FormCalculationsParam } from '@app/core/models';
 
 @Component({
   selector: 'app-calculations-form',
@@ -27,8 +25,11 @@ import { simplify } from 'mathjs';
 })
 export class CalculationsFormComponent implements OnInit {
   @Input() formula!: string;
-  @Input() params!: Array<CalculationsParam>;
-  @Output() result = new EventEmitter<number>();
+  @Input() calculationsParams!: Array<CalculationsParam>;
+  @Output() result = new EventEmitter<{
+    value: FormCalculationsParam[];
+    formula: string;
+  }>();
 
   calculationForm!: FormGroup;
   title = Dictionary.CalculationsViewSubtitle;
@@ -53,7 +54,7 @@ export class CalculationsFormComponent implements OnInit {
       inputFields: new FormArray([]),
     });
 
-    this.params.forEach((param) => {
+    this.calculationsParams.forEach((param) => {
       const { name, description } = param;
       this.inputFields.push(this.createInputField(name, description));
     });
@@ -67,25 +68,27 @@ export class CalculationsFormComponent implements OnInit {
     });
   }
 
-  keyUp(event: KeyboardEvent): boolean {
+  restrict(event: KeyboardEvent): boolean {
     const charCode = event.code ? event.code : event.key;
+    //@ts-ignore
+    if (event?.target?.value.length === 0 && event.key === '0') {
+      event.preventDefault();
+    }
 
-    if (charCode.includes('Digit')) {
+    if (
+      charCode.includes('Digit') ||
+      charCode.includes('Backspace') ||
+      charCode.includes('Comma')
+    ) {
       return true;
     }
     event.preventDefault();
     return false;
   }
 
-  calculate(): void {
-    const value = this.calculationForm.value.inputFields.reduce(
-      (acc: {}, item: { name: string; value: string | number }) => {
-        return { ...acc, [item.name]: +item.value };
-      },
-      {}
-    );
-
-    const mathResult = math.evaluate(simplify(this.formula, value).toString());
-    this.result.emit(mathResult);
+  sendResult(): void {
+    const inputValue: FormCalculationsParam[] =
+      this.calculationForm.value.inputFields;
+    this.result.emit({ value: inputValue, formula: this.formula });
   }
 }

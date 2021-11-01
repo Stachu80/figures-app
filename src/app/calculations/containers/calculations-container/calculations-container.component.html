@@ -8,9 +8,9 @@
 </app-calculation-header>
 <app-calculations-form
         class="form"
-        [params]="(selectCalculationsDetails$|async)!.params"
+        [calculationsParams]="(selectCalculationsDetails$|async)!.params"
         [formula]="(selectCalculationsDetails$|async)!.formula"
-        (result)="showResult($event)">
+        (result)="calculateResult($event)">
 </app-calculations-form>
 <app-calculations-result *ngIf="(result$|async)!"
         class="result"
