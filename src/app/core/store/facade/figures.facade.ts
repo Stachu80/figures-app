@@ -28,7 +28,7 @@ export class FiguresFacade {
 
   constructor(private store: Store<AppState>) {}
 
-  setResult(result: number): void {
+  setResult(result: number | null): void {
     this.store.dispatch(FiguresAction.setResult({ result }));
   }
 

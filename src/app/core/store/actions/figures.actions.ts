@@ -29,5 +29,5 @@ export const setChosenCalculations = createAction(
 
 export const setResult = createAction(
   '[Calculations] set result',
-  props<{ result: number }>()
+  props<{ result: number | null }>()
 );

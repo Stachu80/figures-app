@@ -24,6 +24,14 @@ export class CalculationsContainerComponent {
 
   constructor(private figuresFacade: FiguresFacade, private router: Router) {}
 
+  resetResult(): void {
+    this.figuresFacade.setResult(null);
+  }
+
+  goToConfiguration(): void {
+    this.router.navigate([AppPath.Configuration]);
+  }
+
   calculateResult(event: {
     value: FormCalculationsParam[];
     formula: string;
@@ -38,9 +46,5 @@ export class CalculationsContainerComponent {
       simplify(event.formula, result).toString()
     );
     this.figuresFacade.setResult(mathResult);
-  }
-
-  goToConfiguration(): void {
-    this.router.navigate([AppPath.Configuration]);
   }
 }

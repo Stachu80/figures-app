@@ -31,6 +31,8 @@ export class CalculationsFormComponent implements OnInit {
     formula: string;
   }>();
 
+  @Output() inputChange = new EventEmitter();
+
   calculationForm!: FormGroup;
   title = Dictionary.CalculationsViewSubtitle;
   buttonLabel = Dictionary.CalculationsButtonLabel;
@@ -70,6 +72,7 @@ export class CalculationsFormComponent implements OnInit {
 
   restrict(event: KeyboardEvent): boolean {
     const charCode = event.code ? event.code : event.key;
+    this.inputChange.emit();
     //@ts-ignore
     if (event?.target?.value.length === 0 && event.key === '0') {
       event.preventDefault();

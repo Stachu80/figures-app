@@ -10,6 +10,7 @@
         class="form"
         [calculationsParams]="(selectCalculationsDetails$|async)!.params"
         [formula]="(selectCalculationsDetails$|async)!.formula"
+        (inputChange)="resetResult()"
         (result)="calculateResult($event)">
 </app-calculations-form>
 <app-calculations-result *ngIf="(result$|async)!"
