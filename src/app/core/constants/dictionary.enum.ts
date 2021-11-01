@@ -7,4 +7,5 @@ export enum Dictionary {
   CalculationsViewTitle = 'Kalkulator',
   CalculationsViewSubtitle = 'Wypełnij wymagane pola',
   CalculationsButtonLabel = 'Oblicz',
+  GotoConfiguration = 'Wróć do konfiguracji',
 }

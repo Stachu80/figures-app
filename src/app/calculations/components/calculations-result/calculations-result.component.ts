@@ -18,6 +18,6 @@ export class CalculationsResultComponent implements OnInit {
   resultText: string | undefined;
 
   ngOnInit(): void {
-    this.resultText = `${this.calculationsType} figury : ${this.figureType} wynosi : `;
+    this.resultText = `${this.calculationsType} figury ${this.figureType} wynosi : `;
   }
 }

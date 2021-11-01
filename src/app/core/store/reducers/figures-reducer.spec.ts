@@ -1,13 +1,11 @@
 import {
+  reset,
   setCalculationsData,
   setChosenCalculations,
-  setResult,
-} from '@app/core/store/actions/calculations.actions';
-import {
-  reset,
   setChosenFigure,
   setFiguresData,
-} from '@app/core/store/actions/configuration.actions';
+  setResult,
+} from '@app/core/store/actions/figures.actions';
 import {
   figuresReducer,
   initialState,
@@ -18,7 +16,7 @@ const figuresData = [
     id: 0,
     name: 'Koło',
     area: {
-      formula: '3.14 * r * r',
+      formula: 'pi * r * r',
       params: [
         {
           name: 'r',

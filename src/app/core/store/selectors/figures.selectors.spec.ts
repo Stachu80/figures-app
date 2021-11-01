@@ -8,7 +8,7 @@ const figures = [
     id: 0,
     name: 'Koło',
     area: {
-      formula: '3,141592 * r * r',
+      formula: 'pi * r * r',
       params: [
         {
           name: 'r',
@@ -17,7 +17,7 @@ const figures = [
       ],
     },
     perimeter: {
-      formula: '2 * 3,141592 * r',
+      formula: '2 * pi * r',
       params: [
         {
           name: 'r',
@@ -94,7 +94,7 @@ describe('Figures Selectors', () => {
           selectedCalculation1
         )
       ).toEqual({
-        formula: '2 * 3,141592 * r',
+        formula: '2 * pi * r',
         params: [
           {
             name: 'r',

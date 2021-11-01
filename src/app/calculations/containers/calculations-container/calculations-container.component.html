@@ -1,8 +1,11 @@
 <app-header [subtitle]="subtitle" [title]="title"></app-header>
 <app-calculation-header
         [figureType]=" (selectChosenFigure$|async)?.name"
-        [calculationsType]="(selectChosenCalculations$|async)?.name"
-></app-calculation-header>
+        [calculationsType]="(selectChosenCalculations$|async)?.name">
+    <button mat-stroked-button color="warn"
+            (click)="goToConfiguration()">{{buttonLabelText}}
+    </button>
+</app-calculation-header>
 <app-calculations-form
         class="form"
         [params]="(selectCalculationsDetails$|async)!.params"
