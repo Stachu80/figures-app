@@ -37,8 +37,8 @@ export class ConfigurationContainerComponent implements OnInit {
   setChosenFigure = (figure: ComboboxItem): void =>
     this.figuresFacade.setChosenFigure(figure);
 
-  selectedCalculations = (calculation: ComboboxItem): void =>
-    this.figuresFacade.selectedCalculations(calculation);
+  setChosenCalculations = (calculation: ComboboxItem): void =>
+    this.figuresFacade.setChosenCalculations(calculation);
 
   goToCalculations(): void {
     this.router.navigate([AppPath.Calculations]);

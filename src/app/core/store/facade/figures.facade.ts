@@ -40,7 +40,7 @@ export class FiguresFacade {
     this.store.dispatch(FiguresAction.setChosenFigure({ chosenFigure }));
   }
 
-  selectedCalculations(chosenCalculations: ComboboxItem): void {
+  setChosenCalculations(chosenCalculations: ComboboxItem): void {
     this.store.dispatch(
       FiguresAction.setChosenCalculations({ chosenCalculations })
     );

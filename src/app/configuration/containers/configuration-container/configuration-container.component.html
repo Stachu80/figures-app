@@ -10,7 +10,7 @@
             class="combobox"
             [title]="combobox1Title"
             [comboElements]="selectCalculationsData$|async"
-            (selectedComboItem)="selectedCalculations($event)"
+            (selectedComboItem)="setChosenCalculations($event)"
     ></app-combobox>
 </div>
 <div class="button-wrapper">
