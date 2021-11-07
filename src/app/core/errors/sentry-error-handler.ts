@@ -13,8 +13,11 @@ Sentry.init({
 
 @Injectable()
 export class SentryErrorHandler extends ErrorHandler {
-  // @ts-ignore
-  handleError(error) {
+  handleError(error: {
+    originalError: any;
+    message: string | string[];
+    status: number;
+  }) {
     let errHeader = 'Przepraszamy, wystapił błąd.';
     const err = error.originalError || error;
 
